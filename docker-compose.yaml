@@ -29,16 +29,16 @@ services:
         - "27017:27017"
 
   nginx:
-    container_name: nginx
+    container_name: nginx-telemetry
     image: nginx:latest
     ports:
-        - "80:80"
+        - "8020:80"
     volumes:
         - ./.docker/nginx/nginx.conf:/etc/nginx/nginx.conf
     networks:
         - main_network
     depends_on:
-        - access-service
+        - access
     
 networks:
   main_network:

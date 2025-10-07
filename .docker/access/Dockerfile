@@ -22,6 +22,8 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS imagemagick-dev icu-de
 # Install Node.js
 RUN apk add nodejs-lts npm
 
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
 # This is needed to fix Composer warnings during installations/updates
 RUN mkdir -p /composer/cache/files && \
     chown -R www-data:www-data /composer
