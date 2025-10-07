@@ -39,6 +39,26 @@ services:
         - main_network
     depends_on:
         - access
+
+  normalization:
+    container_name: normalization-service
+    build:
+        context: .
+        dockerfile: ./.docker/normalization/Dockerfile
+    volumes:
+        - ./normalization:/var/www/html
+    networks:
+        - main_network
+
+  kafka:
+    image: apache/kafka:4.1.0
+    container_name: kafka-telemetry
+    build:
+      context: .
+    environment:
+      - KAFKA_NUM_PARTITIONS=3
+    networks:
+      - main_network  
     
 networks:
   main_network:
