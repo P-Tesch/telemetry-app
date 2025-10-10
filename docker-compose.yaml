@@ -58,7 +58,15 @@ services:
     environment:
       - KAFKA_NUM_PARTITIONS=3
     networks:
-      - main_network  
+      - main_network
+
+  scylla:
+    image: scylladb/scylla:2025.3
+    container_name: scylla-telemetry
+    volumes:
+      - scylla:/var/lib/scylla
+    networks:
+      - main_network
     
 networks:
   main_network:
@@ -66,4 +74,6 @@ networks:
 
 volumes:
   mongodb:
+    driver: local
+  scylla:
     driver: local
