@@ -47,6 +47,8 @@ services:
         dockerfile: ./.docker/normalization/Dockerfile
     volumes:
         - ./normalization:/var/www/html
+    ports:
+        - "9090:9090/udp"
     networks:
         - main_network
 
