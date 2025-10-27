@@ -47,6 +47,9 @@ services:
         dockerfile: ./.docker/normalization/Dockerfile
     volumes:
         - ./normalization:/var/www/html
+    ports:
+        # - "49152–65535:49152–65535/udp"
+        - "60000–60500:60000–60500/udp"
     networks:
         - main_network
 

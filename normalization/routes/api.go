@@ -5,5 +5,5 @@ import (
 )
 
 func RegisterUDPRoutes() {
-	fh4.Listen()
+	fh4.Listen(60000, 60500)
 }
