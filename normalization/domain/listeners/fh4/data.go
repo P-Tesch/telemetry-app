@@ -53,7 +53,7 @@ type Rpm struct {
 type Rotation struct {
 	Yaw   float32
 	Pitch float32
-	Row   float32
+	Roll  float32
 }
 
 type Controls struct {
@@ -65,7 +65,7 @@ type Controls struct {
 	Steer     int8
 }
 
-type TelemetryData struct {
+type FH4TelemetryData struct {
 	IsRaceOn    int32
 	TimestampMS uint32
 

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net"
 
+	"github.com/P-Tesch/telemetry-app/normalization/domain/messaging"
 	"github.com/P-Tesch/telemetry-app/normalization/utils"
 )
 
@@ -33,13 +34,13 @@ func listenPort(port int) {
 			continue
 		}
 
-		var data TelemetryData
+		var data FH4TelemetryData
 		err = binary.Read(bytes.NewReader(buf[:n]), binary.LittleEndian, &data)
 		if err != nil {
 			fmt.Println("Binary decode error:", err)
 			continue
 		}
 
-		fmt.Printf("Speed: %.2f m/s, RPM: %.0f\n", data.Speed, data.Rpm.Current)
+		messaging.Post(data.Convert())
 	}
 }
