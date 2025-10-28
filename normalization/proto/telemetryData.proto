@@ -1,0 +1,73 @@
+syntax = "proto3";
+package messaging;
+
+option go_package = "github.com/P-Tesch/telemetry-app/normalization/domain/messaging";
+
+message Vector {
+    float X = 1;
+    float Y = 2;
+    float Z = 3;
+}
+
+message WheelsData {
+    float FL = 1;
+    float FR = 2;
+    float RL = 3;
+    float RR = 4;
+}
+
+message CarInfo {
+    int32 Ordinal = 1;
+    int32 Class = 2;
+    int32 PerformanceIndex = 3;
+    int32 DrivetrainType = 4;
+    int32 NumCylinders = 5;
+}
+
+message RaceInfo {
+    float DistanceTraveled = 1;
+    float BestLap = 2;
+    float LastLap = 3;
+    float CurrentLap = 4;
+    float CurrentRaceTime = 5;
+    uint32 LapNumber = 6;
+    uint32 RacePosition = 7;
+}
+
+message Rpm {
+    float Max = 1;
+    float Current = 2;
+}
+
+message Controls {
+    uint32 Accel = 1;
+    uint32 Brake = 2;
+    uint32 Clutch = 3;
+    uint32 Handbrake = 4;
+    uint32 Gear = 5;
+    uint32 Steer = 6;
+}
+
+message TelemetryData {
+    int32 IsRaceOn = 1;
+    uint32 Timestamp = 2;
+
+    Rpm Rpm = 3;
+
+    CarInfo CarInfo = 4;
+
+    Vector Position = 5;
+    Vector Rotation = 6;
+
+    float Speed = 7;
+    float Power = 8;
+    float Torque = 9;
+    float Boost = 10;
+    float Fuel = 11;
+
+    WheelsData TireTemp = 12;
+
+    RaceInfo RaceInfo = 13;
+
+    Controls Controls = 14;
+}
