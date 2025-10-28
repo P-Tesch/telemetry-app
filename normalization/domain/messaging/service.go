@@ -1,20 +1,39 @@
 package messaging
 
 import (
+	"fmt"
+
 	"github.com/IBM/sarama"
-	"github.com/gogo/protobuf/proto"
+	"google.golang.org/protobuf/proto"
 )
 
-func Post(data TelemetryData) {
+type Kafka struct {
+	producer sarama.AsyncProducer
+}
+
+func MakeKafka() Kafka {
 	config := sarama.NewConfig()
 	config.Producer.Return.Successes = true
 	producer, err := sarama.NewAsyncProducer([]string{"kafka:9092"}, config)
 	if err != nil {
-		panic(err)
+		panic("Failed to create producer: " + err.Error())
 	}
+	return Kafka{
+		producer: producer,
+	}
+}
 
-	protoData, err := proto.Marshal(data) // TODO: Proto object
-	message := &sarama.ProducerMessage{Topic: "my_topic", Value: sarama.ByteEncoder(protoData)}
+func (kafka *Kafka) CloseKafka() {
+	kafka.producer.Close()
+}
 
-	producer.Input() <- message
+func (kafka *Kafka) Post(data *TelemetryData) {
+	protoData, err := proto.Marshal(data)
+	if err != nil {
+		fmt.Println("Failed to marshal proto: " + err.Error())
+		return
+	}
+	message := &sarama.ProducerMessage{Topic: "telemetry", Value: sarama.ByteEncoder(protoData)}
+
+	kafka.producer.Input() <- message
 }
