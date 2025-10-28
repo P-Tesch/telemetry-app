@@ -1,0 +1,14 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+
+parameters:
+    ignoreErrors:
+        -
+            message: '#.*#'
+            path: _ide_helper_models.php
+    paths:
+        - app/
+        - tests/
+        - _ide_helper_models.php
+    level: 7

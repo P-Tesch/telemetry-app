@@ -1,0 +1,8 @@
+{
+    "preset": "per",
+    "rules": {
+        "function_declaration": {
+            "closure_fn_spacing": "one"
+        }
+    }
+}

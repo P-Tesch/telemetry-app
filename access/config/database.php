@@ -113,6 +113,13 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'connections' => [
+            'mongodb' => [
+                'driver' => 'mongodb',
+                'dsn' => 'mongodb://' . env('DB_HOST', 'localhost') . ':' . env('DB_PORT', '27017'),
+                'database' => env('DB_DATABASE', 'laravel_app'),
+            ],
+        ],
     ],
 
     /*

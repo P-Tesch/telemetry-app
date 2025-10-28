@@ -13,11 +13,14 @@ USER root
 RUN apk update
 
 # Install PHP extensions
-RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS imagemagick-dev icu-dev \
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS imagemagick-dev icu-dev openssl-dev \
     && docker-php-ext-install intl bcmath \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
-    && apk del .build-deps
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb \
+    && apk del .build-deps \
+    && rm -rf /tmp/pear
 
 # Install Node.js
 RUN apk add nodejs-lts npm
