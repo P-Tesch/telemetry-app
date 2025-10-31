@@ -1,6 +1,10 @@
 <script setup lang="ts">
-    import LangButton from '@/Components/LangButton.vue';
+    import LoginPageView from '@/actions/App/Views/Auth/Login/LoginPageView';
+import RegisterPageView from '@/actions/App/Views/Auth/Register/RegisterPageView';
+import LandingPageView from '@/actions/App/Views/LandingPage/LandingPageView';
+import LangButton from '@/Components/LangButton.vue';
     import { LandingPageText } from '@/Props/LandingPageProps';
+    import { Link } from '@inertiajs/vue3';
 
     interface Props {
         text: LandingPageText;
@@ -12,15 +16,15 @@
 
 <template>
     <div class="sticky flex justify-between p-5">
-        <h1>LOGO</h1>
+        <Link :href="LandingPageView()">LOGO</Link>
         <div class="flex gap-5">
             <p>FEATURE1</p>
             <p>FEATURE2</p>
             <p>FEATURE3</p>
         </div>
         <div class="flex gap-2">
-            <button class="btn btn-primary btn-outline">{{ props.text.logIn }}</button>
-            <button class="btn btn-primary">{{ props.text.register }}</button>
+            <Link class="btn btn-primary btn-outline" :href="LoginPageView()">{{ props.text.logIn }}</Link>
+            <Link class="btn btn-primary" :href="RegisterPageView()">{{ props.text.register }}</Link>
             <LangButton />
         </div>
     </div>
