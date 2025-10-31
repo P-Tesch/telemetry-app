@@ -13,6 +13,7 @@
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
+        "laravel/wayfinder": "^0.1.12",
         "mongodb/laravel-mongodb": "^5.5"
     },
     "require-dev": {
@@ -47,6 +48,7 @@
         "ide": "@php artisan ide-helper:models -M -n",
         "ci": [
             "@php artisan ide-helper:models -M -n",
+            "@php artisan wayfinder:generate",
             "vendor/bin/pint",
             "vendor/bin/phpstan analyse --memory-limit=2G --no-interaction",
             "vendor/bin/phpunit"
