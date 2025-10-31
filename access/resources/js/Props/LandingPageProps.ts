@@ -3,7 +3,7 @@ export default interface LandingPageProps {
     text: LandingPageText
 }
 
-interface LandingPageText {
+export interface LandingPageText {
     logIn: string,
     register: string
 }
