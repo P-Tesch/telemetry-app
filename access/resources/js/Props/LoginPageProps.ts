@@ -3,5 +3,7 @@ export default interface LoginPageProps {
 }
 
 interface LoginPageText {
-
+    name: string,
+    password: string,
+    logIn: string
 }

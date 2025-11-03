@@ -1,9 +1,6 @@
 <?php
 
-use App\Views\Auth\Login\LoginPageView;
-use App\Views\Auth\Register\RegisterPageView;
 use App\Views\HttpMethod;
-use App\Views\LandingPage\LandingPageView;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Finder\Finder;
 
@@ -22,21 +19,25 @@ Route::group(
                 continue;
             }
 
+
             $class = new ReflectionClass(Str::replace("/", "\\", Str::ucfirst(array_pop($matches))));
 
             /** @var list<ReflectionMethod> $methods */
             $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
             foreach ($methods as $method) {
-                if (Str::startsWith($method->getName(), "__")) {
+                $methodName = $method->getName();
+                if (Str::startsWith($methodName, "__")) {
                     continue;
                 }
 
                 /** @var ReflectionAttribute $attribute */
                 $attribute = current($method->getAttributes(HttpMethod::class));
 
-                Route::{$attribute->getArguments()[0]};
+                $methodNameSnake = Str::snake($methodName, "-");
+                $className = Str::chopEnd($class->getShortName(), "View");
+                $classNameSnake = Str::snake($className, "-");
+                Route::{$attribute->getArguments()[0]}("/$classNameSnake/$methodNameSnake", [$class->getName(), $methodName])->name("$className.$methodName");
             }
         }
-        die;
     }
 );

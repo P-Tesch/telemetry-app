@@ -13,7 +13,8 @@ USER root
 RUN apk update
 
 # Install PHP extensions
-RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS imagemagick-dev icu-dev openssl-dev \
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
+    && apk add --no-cache imagemagick-dev icu-dev openssl-dev \
     && docker-php-ext-install intl bcmath \
     && pecl install imagick \
     && docker-php-ext-enable imagick \

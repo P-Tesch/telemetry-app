@@ -1,4 +1,8 @@
 {
     "Log In": "Entrar",
-    "Register": "Registrar"
+    "Register": "Registrar",
+    "Username": "Usuário",
+    "Password": "Senha",
+    "E-mail": "E-mail",
+    "Confirm password": "Confirmar senha"
 }

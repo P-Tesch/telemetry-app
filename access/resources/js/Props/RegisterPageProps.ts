@@ -3,5 +3,9 @@ export default interface RegisterPageProps {
 }
 
 interface RegisterPageText {
-
+    name: string,
+    password: string,
+    register: string,
+    email: string,
+    confirmation: string
 }
