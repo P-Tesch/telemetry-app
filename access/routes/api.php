@@ -19,7 +19,6 @@ Route::group(
                 continue;
             }
 
-
             $class = new ReflectionClass(Str::replace("/", "\\", Str::ucfirst(array_pop($matches))));
 
             /** @var list<ReflectionMethod> $methods */

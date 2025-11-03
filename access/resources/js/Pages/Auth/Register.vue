@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import RegisterView from '@/actions/App/Views/Auth/Register/RegisterView';
-import RegisterPageProps from '@/Props/RegisterPageProps';
+import RegisterProps from '@/Props/RegisterProps';
 import { Form } from '@inertiajs/vue3'
 
-const props = defineProps<RegisterPageProps>();
+const props = defineProps<RegisterProps>();
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import LoginView from '@/actions/App/Views/Auth/Login/LoginView';
-import LoginPageProps from '@/Props/LoginPageProps';
+import LoginProps from '@/Props/LoginProps';
 import { Form } from '@inertiajs/vue3';
 
-const props = defineProps<LoginPageProps>();
+const props = defineProps<LoginProps>();
 </script>
 
 <template>

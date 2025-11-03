@@ -12,7 +12,7 @@ use Redirect;
 class RegisterView extends InertiaView {
     use RegisterText;
 
-    protected string $view { get => "Auth/RegisterPage"; }
+    protected string $view { get => "Auth/Register"; }
 
     #[HttpMethod(HttpMethod::POST)]
     public function register(Request $request): RedirectResponse {

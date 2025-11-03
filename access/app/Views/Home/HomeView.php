@@ -5,5 +5,8 @@ namespace App\Views\Home;
 use App\Views\InertiaView;
 
 class HomeView extends InertiaView {
-    protected string $view { get => "HomePage"; }
+    use HomeText;
+
+    protected string $view { get => "Home"; }
+    public string $test = "test";
 }

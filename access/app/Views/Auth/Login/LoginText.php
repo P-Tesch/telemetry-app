@@ -7,7 +7,8 @@ trait LoginText {
         [
             "name" => __("Username"),
             "password" => __("Password"),
-            "logIn" => __("Log In")
+            "logIn" => __("Log In"),
+            "incorrectCredentials" => __("The provided credentials are incorrect.")
         ];
     }
 }

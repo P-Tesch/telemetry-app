@@ -13,7 +13,7 @@ use Redirect;
 class LoginView extends InertiaView {
     use LoginText;
 
-    protected string $view { get => "Auth/LoginPage"; }
+    protected string $view { get => "Auth/Login"; }
 
     #[HttpMethod(HttpMethod::POST)]
     public function login(Request $request): RedirectResponse {
