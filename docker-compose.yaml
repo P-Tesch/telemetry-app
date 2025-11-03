@@ -17,9 +17,11 @@ services:
 
     access-vite:
         container_name: access-vite
-        image: node:24
+        build:
+            context: .
+            target: development
+            dockerfile: ./.docker/access-vite/Dockerfile
         working_dir: /var/www/html
-        command: sh -c "npm install && npm run dev"
         volumes:
             - ./access:/var/www/html
         ports:
