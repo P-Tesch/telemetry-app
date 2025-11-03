@@ -25,6 +25,7 @@ Route::group(
             /** @var list<ReflectionMethod> $methods */
             $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
             foreach ($methods as $method) {
+                $className = Str::chopEnd($class->getShortName(), "View");
                 $methodName = $method->getName();
                 if (Str::startsWith($methodName, "__")) {
                     continue;
@@ -32,9 +33,11 @@ Route::group(
 
                 /** @var ReflectionAttribute $attribute */
                 $attribute = current($method->getAttributes(HttpMethod::class));
+                if (!$attribute) {
+                    throw new Exception("Missing HttpMethod attribute for $className:$methodName");
+                }
 
                 $methodNameSnake = Str::snake($methodName, "-");
-                $className = Str::chopEnd($class->getShortName(), "View");
                 $classNameSnake = Str::snake($className, "-");
                 Route::{$attribute->getArguments()[0]}("/$classNameSnake/$methodNameSnake", [$class->getName(), $methodName])->name("$className.$methodName");
             }

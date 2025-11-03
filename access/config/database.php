@@ -115,10 +115,8 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => 'mongodb://' . env('DB_HOST', 'localhost') . ':' . env('DB_PORT', '27017'),
+            'dsn' => 'mongodb://' . env('DB_USERNAME', 'root') . ':' . env('DB_PASSWORD', 'pass') . '@' . env('DB_HOST', 'localhost') . ':' . env('DB_PORT', '27017'),
             'database' => env('DB_DATABASE', 'laravel_app'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
         ],
     ],
 

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-    import LoginPageView from '@/actions/App/Views/Auth/Login/LoginPageView';
-import RegisterPageView from '@/actions/App/Views/Auth/Register/RegisterPageView';
+import LoginView from '@/actions/App/Views/Auth/Login/LoginView';
+import RegisterView from '@/actions/App/Views/Auth/Register/RegisterView';
 import LandingPageView from '@/actions/App/Views/LandingPage/LandingPageView';
 import LangButton from '@/Components/LangButton.vue';
-    import { LandingPageText } from '@/Props/LandingPageProps';
-    import { Link } from '@inertiajs/vue3';
+import { LandingPageText } from '@/Props/LandingPageProps';
+import { Link } from '@inertiajs/vue3';
 
-    interface Props {
-        text: LandingPageText;
-    }
+interface Props {
+    text: LandingPageText;
+}
 
-    const props = defineProps<Props>();
+const props = defineProps<Props>();
 
 </script>
 
@@ -23,8 +23,8 @@ import LangButton from '@/Components/LangButton.vue';
             <p>FEATURE3</p>
         </div>
         <div class="flex gap-2">
-            <Link class="btn btn-primary btn-outline" :href="LoginPageView()">{{ props.text.logIn }}</Link>
-            <Link class="btn btn-primary" :href="RegisterPageView()">{{ props.text.register }}</Link>
+            <Link class="btn btn-primary btn-outline" :href="LoginView()">{{ props.text.logIn }}</Link>
+            <Link class="btn btn-primary" :href="RegisterView()">{{ props.text.register }}</Link>
             <LangButton />
         </div>
     </div>

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-    import RegisteredUserController from '@/actions/Laravel/Fortify/Http/Controllers/RegisteredUserController';
-    import RegisterPageProps from '@/Props/RegisterPageProps';
-    import { Form } from '@inertiajs/vue3'
+import RegisterView from '@/actions/App/Views/Auth/Register/RegisterView';
+import RegisterPageProps from '@/Props/RegisterPageProps';
+import { Form } from '@inertiajs/vue3'
 
-    const props = defineProps<RegisterPageProps>();
+const props = defineProps<RegisterPageProps>();
 </script>
 
 <template>
     <div class="outline p-10 flex">
-        <Form :action="RegisteredUserController.store()">
+        <Form :action="RegisterView.register()">
             <div class="flex">
                 <label for="name">{{ props.text.name }}</label>
                 <input name="name" class="input"></input>

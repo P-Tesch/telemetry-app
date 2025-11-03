@@ -4,5 +4,6 @@
     "Username": "Username",
     "Password": "Password",
     "E-mail": "E-mail",
-    "Confirm password": "Confirm password"
+    "Confirm password": "Confirm password",
+    "The provided credentials are incorrect.": "The provided credentials are incorrect."
 }

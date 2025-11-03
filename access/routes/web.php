@@ -3,6 +3,7 @@
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Views\Auth\Login\LoginView;
 use App\Views\Auth\Register\RegisterView;
+use App\Views\Home\HomeView;
 use App\Views\LandingPage\LandingPageView;
 use Illuminate\Support\Facades\Route;
 
@@ -16,5 +17,6 @@ Route::group(
         Route::get('/', LandingPageView::class);
         Route::get('/login', LoginView::class);
         Route::get('/register', RegisterView::class);
+        Route::get('/home', HomeView::class);
     }
 );

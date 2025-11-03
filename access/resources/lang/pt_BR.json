@@ -4,5 +4,6 @@
     "Username": "Usuário",
     "Password": "Senha",
     "E-mail": "E-mail",
-    "Confirm password": "Confirmar senha"
+    "Confirm password": "Confirmar senha",
+    "The provided credentials are incorrect.": "As credenciais providenciadas estão incorretas."
 }
