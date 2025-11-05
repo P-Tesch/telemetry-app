@@ -4,7 +4,7 @@ import path from "path";
 export default function viewTsGenerator(options = {}) {
     const {
         root = "./../app/Views",
-        command = "php artisan app:generate-views-ts",
+        command = "php artisan app:generate-views-ts && php artisan wayfinder:generate",
     } = options;
 
     let watching = false;
